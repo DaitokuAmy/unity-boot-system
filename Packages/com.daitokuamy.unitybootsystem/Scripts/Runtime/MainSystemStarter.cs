@@ -20,14 +20,30 @@ namespace UnityBootSystem {
         /// <summary>
         /// 生成時処理
         /// </summary>
+        protected virtual void AwakeInternal() { }
+
+        /// <summary>
+        /// 開始時処理
+        /// </summary>
+        protected virtual void StartInternal() { }
+
+        /// <summary>
+        /// 廃棄時処理
+        /// </summary>
+        protected virtual void OnDestroyInternal() { }
+
+        /// <summary>
+        /// 生成時処理
+        /// </summary>
         private void Awake() {
             if (Current != null || BootManager.IsExists) {
                 DestroyImmediate(gameObject);
                 return;
             }
 
-            DontDestroyOnLoad(gameObject);
             Current = this;
+            AwakeInternal();
+            DontDestroyOnLoad(gameObject);
         }
 
         /// <summary>
@@ -39,6 +55,7 @@ namespace UnityBootSystem {
             }
 
             SceneManager.LoadScene(_bootSceneName);
+            StartInternal();
         }
 
         /// <summary>
@@ -49,6 +66,7 @@ namespace UnityBootSystem {
                 return;
             }
 
+            OnDestroyInternal();
             Current = null;
         }
     }
