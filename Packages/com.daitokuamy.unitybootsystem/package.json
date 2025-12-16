@@ -1,0 +1,13 @@
+{
+    "name": "com.daitokuamy.unitybootsystem",
+    "displayName": "Unity Boot System",
+    "version": "0.9.0",
+    "unity": "6000.0",
+    "license" : "MIT",
+    "dependencies": { },
+    "author": {
+        "name": "Hironori Ito",
+        "url": "https://github.com/DaitokuAmy"
+    },
+    "description": "A system that supports launching Unity scenes through appropriate procedures."
+}
